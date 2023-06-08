@@ -1,0 +1,13 @@
+/*
+* Autor: Arleth Machuca Fabian 406
+* Fecha de creación: 29 may. 2023
+* Fecha de modificación: 29 may. 2023
+* Descripción: Se creó la interfáz de ingresar clientes.
+ */
+
+package controller;
+
+
+public class ClienteController {
+    
+}
