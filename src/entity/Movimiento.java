@@ -8,24 +8,6 @@
 package entity;
 
 public class Movimiento {
-    private String tipoMov;
-    private double monto;
-
-    public String getTipoMov() {
-        return tipoMov;
-    }
-
-    public void setTipoMov(String tipoMov) {
-        this.tipoMov = tipoMov;
-    }
-
-    public double getMonto() {
-        return monto;
-    }
-
-    public void setMonto(double monto) {
-        this.monto = monto;
-    }
-    
+  
     
 }

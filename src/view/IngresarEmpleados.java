@@ -35,7 +35,7 @@ public class IngresarEmpleados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelEmpleados = new javax.swing.JPanel();
+        javax.swing.JPanel panelEmpleados = new javax.swing.JPanel();
         empleadoRFC = new javax.swing.JLabel();
         empleadosNombre = new javax.swing.JLabel();
         empleadosDireccion = new javax.swing.JLabel();
@@ -188,12 +188,11 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 /**
  * 
@@ -207,7 +206,9 @@ public class IngresarEmpleados extends javax.swing.JFrame {
             this.ingresarDireccionEmpleados.getText());
             
 //            Aqui guarda
+            controlador.agregarRegistro(listaEmpleados, empleados);
             mostrarDatosEmpleadosTabla();
+            
         } else{
             JOptionPane.showMessageDialog(this, "Este empleado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -229,6 +230,7 @@ public class IngresarEmpleados extends javax.swing.JFrame {
     
     if (respuesta == JOptionPane.YES_OPTION) {
         // Aqui elimina:
+        controlador.eliminarRegistro(listaEmpleados, RFC);
         mostrarDatosEmpleadosTabla();
 }
     }//GEN-LAST:event_eliminarEmpleadosMouseClicked
@@ -239,17 +241,16 @@ public class IngresarEmpleados extends javax.swing.JFrame {
  */
     
     private void actualizarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizarEmpleadosMouseClicked
-        int i = 0;
-        for(Empleados empleado : listaEmpleados){
-            if(empleado.getCodEmpleado().equals(codEmpActual)){
-                listaEmpleados.set(i,new Empleados(ingresarRFCempleados.getText(), 
-                        ingresarNombreEmpleados.getText(), 
-                        ingresarTelefonoEmpleados.getText(), 
-                        ingresarDireccionEmpleados.getText()));
-                break;
-            }
-            i++;
-        }
+
+           Empleados empleado = new Empleados(this.ingresarRFCempleados.getText(),
+            this.ingresarNombreEmpleados.getText(),
+            this.ingresarTelefonoEmpleados.getText(),
+            this.ingresarDireccionEmpleados.getText());
+        
+        // Aqui actualiza 
+        controlador.modificarRegistro(listaEmpleados, empleado);
+        
+        
         mostrarDatosEmpleadosTabla();
     }//GEN-LAST:event_actualizarEmpleadosMouseClicked
 /**
@@ -268,6 +269,12 @@ public class IngresarEmpleados extends javax.swing.JFrame {
                 break;
             }
         }
+        /*Empleados empleado = new Empleados(this.ingresarRFCempleados.getText(),
+            this.ingresarNombreEmpleados.getText(),
+            this.ingresarTelefonoEmpleados.getText(),
+            this.ingresarDireccionEmpleados.getText());*/
+        
+       // controlador.mostrarRegistros(listaEmpleados, modelo2);
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
     
     
@@ -308,7 +315,6 @@ public class IngresarEmpleados extends javax.swing.JFrame {
     private javax.swing.JTextField ingresarRFCempleados;
     private javax.swing.JTextField ingresarTelefonoEmpleados;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panelEmpleados;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
 

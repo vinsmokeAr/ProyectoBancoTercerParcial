@@ -7,11 +7,31 @@
 
 package controller;
 
+import entity.Empleados;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import model.EmpleadoModelImpl;
+import model.IEmpleadoModel;
 
 
 
-public class EmpleadoController{
+
+public class EmpleadoController {
 
    
-
+    IEmpleadoModel modelo = new EmpleadoModelImpl();
+    
+    public void agregarRegistro(List<Empleados> listaE,Empleados empleado){
+        modelo.agregarRegistro(listaE, empleado);
+    }
+    public void eliminarRegistro(List<Empleados> listaE,String cod){
+        modelo.eliminarRegistro(listaE, cod);
+    }
+    public void modificarRegistro(List<Empleados> listaE, Empleados empleado){
+        modelo.modificarRegistro(listaE, empleado);
+    }
+    public void mostrarRegistros(List<Empleados> listaE,DefaultTableModel modeloT){
+        modelo.mostrarRegistros(listaE, modeloT);
+    }
+    
 }

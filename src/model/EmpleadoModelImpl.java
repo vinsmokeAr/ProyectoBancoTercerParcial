@@ -4,13 +4,11 @@
 * Fecha de modificación: 29 may. 2023
 * Descripción: Se creó la interfáz de ingresar clientes.
  */
-
 package model;
 
 import entity.Empleados;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
 
 public class EmpleadoModelImpl implements IEmpleadoModel {
 
@@ -24,7 +22,7 @@ public class EmpleadoModelImpl implements IEmpleadoModel {
         for (Empleados empleados : listaE) {
             if (empleados.getCodEmpleado().compareTo(cod) == 0) {
                 listaE.remove(empleados);
-                
+
                 break;
             }
         }
@@ -32,30 +30,28 @@ public class EmpleadoModelImpl implements IEmpleadoModel {
 
     @Override
     public void modificarRegistro(List<Empleados> listaE, Empleados empleado) {
-          for (int i = 0; i < listaE.size(); i++) {
-        Empleados emp = listaE.get(i);
-        if (emp.getCodEmpleado().equals(empleado.getCodEmpleado())) {
-            listaE.set(i, empleado);
-            break;
+        int i = 0;
+
+        for (Empleados empleados : listaE) {
+            if (empleado.getCodEmpleado().equals(empleados.getCodEmpleado())) {
+                listaE.set(i, empleado);
+                break;
+            }
+            i++;
         }
-    }   
     }
 
     @Override
     public void mostrarRegistros(List<Empleados> listaE, DefaultTableModel modeloT) {
-        
-         modeloT.setRowCount(0); // Limpiar el modelo de tabla antes de agregar los registros
 
-    for (Empleados empleado : listaE) {
-        Object[] fila = {
-            empleado.getCodEmpleado(),
-            empleado.getNombre(),
-            empleado.getDireccion()
-            // Agrega aquí los demás campos del empleado que desees mostrar en la tabla
-        };
-        modeloT.addRow(fila);
-        
+       //Empleados.getCodEm = tablaEmpleados.getValueAt(tablaE.getSelectedRow(), 0).toString();
+        for (Empleados empleado : listaE) {
+            if (empleado.getCodEmpleado().equals(empleado.getCodEmpleado())) {
+
+                break;
+            }
+
+        }
+
     }
-
-}
 }
