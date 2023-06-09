@@ -13,24 +13,22 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
 public class IngresarEmpleados extends javax.swing.JFrame {
- private List<Empleados> listaEmpleados = new ArrayList<>();
-    private final DefaultTableModel modelo2;           
+
+    private List<Empleados> listaEmpleados = new ArrayList<>();
+    private final DefaultTableModel modelo2;
     private String codEmpActual;
     EmpleadoController controlador = new EmpleadoController();
-   
-    
+
     /**
      * Se inicializó el método empleados
      */
     public IngresarEmpleados() {
         initComponents();
-         modelo2 = (DefaultTableModel)tablaEmpleados.getModel(); // inicializar cliente
+        modelo2 = (DefaultTableModel) tablaEmpleados.getModel(); // inicializar cliente
 
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -195,104 +193,92 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 /**
- * 
- * Se creó el método con Mouse Clicked del botón guardar empleados
- */
+     *
+     * Se creó el método con Mouse Clicked del botón guardar empleados
+     */
     private void guardarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarEmpleadosMouseClicked
-        if(validRegistro(ingresarRFCempleados.getText())){
+        if (validRegistro(ingresarRFCempleados.getText())) {
             Empleados empleados = new Empleados(this.ingresarRFCempleados.getText(),
-            this.ingresarNombreEmpleados.getText(),
-            this.ingresarTelefonoEmpleados.getText(),
-            this.ingresarDireccionEmpleados.getText());
-            
+                    this.ingresarNombreEmpleados.getText(),
+                    this.ingresarTelefonoEmpleados.getText(),
+                    this.ingresarDireccionEmpleados.getText());
+
 //            Aqui guarda
             controlador.agregarRegistro(listaEmpleados, empleados);
             mostrarDatosEmpleadosTabla();
-            
-        } else{
+        } else {
             JOptionPane.showMessageDialog(this, "Este empleado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
+
+
     }//GEN-LAST:event_guardarEmpleadosMouseClicked
 
- /**
- * 
- * Se creó el método con Mouse Clicked del botón eliminar empleados
- */
-    
-    private void eliminarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarEmpleadosMouseClicked
+    /**
+     *
+     * Se creó el método con Mouse Clicked del botón eliminar empleados
+     */
 
-       
-    String RFC = tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0).toString();
-    
-    int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
-    
-    if (respuesta == JOptionPane.YES_OPTION) {
-        // Aqui elimina:
-        controlador.eliminarRegistro(listaEmpleados, RFC);
-        mostrarDatosEmpleadosTabla();
-}
+    private void eliminarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarEmpleadosMouseClicked
+        String RFC = tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0).toString();
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
+
+        if (respuesta == JOptionPane.YES_OPTION) {
+            // Aqui elimina:
+            controlador.eliminarRegistro(listaEmpleados, RFC);
+            mostrarDatosEmpleadosTabla();
+        }
     }//GEN-LAST:event_eliminarEmpleadosMouseClicked
 
- /**
- * 
- * Se creó el método con Mouse Clicked del botón actualizar empleados
- */
-    
+    /**
+     *
+     * Se creó el método con Mouse Clicked del botón actualizar empleados
+     */
+
     private void actualizarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizarEmpleadosMouseClicked
 
-           Empleados empleado = new Empleados(this.ingresarRFCempleados.getText(),
-            this.ingresarNombreEmpleados.getText(),
-            this.ingresarTelefonoEmpleados.getText(),
-            this.ingresarDireccionEmpleados.getText());
-        
+        Empleados empleado = new Empleados(this.ingresarRFCempleados.getText(),
+                this.ingresarNombreEmpleados.getText(),
+                this.ingresarTelefonoEmpleados.getText(),
+                this.ingresarDireccionEmpleados.getText());
+
         // Aqui actualiza 
         controlador.modificarRegistro(listaEmpleados, empleado);
-        
-        
+
         mostrarDatosEmpleadosTabla();
     }//GEN-LAST:event_actualizarEmpleadosMouseClicked
-/**
- * 
- *  Se inicializó el método para 
- */
+    /**
+     *
+     * Se inicializó el método para
+     */
     private void tablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadosMouseClicked
         codEmpActual = tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0).toString();
-        for(Empleados empleado : listaEmpleados){
-            if(empleado.getCodEmpleado().equals(codEmpActual)){
+        for (Empleados empleado : listaEmpleados) {
+            if (empleado.getCodEmpleado().equals(codEmpActual)) {
                 ingresarRFCempleados.setText(empleado.getCodEmpleado());
                 ingresarNombreEmpleados.setText(empleado.getNombre());
                 ingresarDireccionEmpleados.setText(empleado.getDireccion());
                 ingresarTelefonoEmpleados.setText(empleado.getTelefono());
-                
                 break;
             }
         }
-        /*Empleados empleado = new Empleados(this.ingresarRFCempleados.getText(),
-            this.ingresarNombreEmpleados.getText(),
-            this.ingresarTelefonoEmpleados.getText(),
-            this.ingresarDireccionEmpleados.getText());*/
-        
-       // controlador.mostrarRegistros(listaEmpleados, modelo2);
+
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
-    
-    
-/**
- * 
- * Se creó el método para validar el registro para que no se repitan empleados
- */
-    private boolean validRegistro(String id){
-        for(Empleados empleado : listaEmpleados){
-            if(empleado.getCodEmpleado().equals(id)){
+
+    /**
+     *
+     * Se creó el método para validar el registro para que no se repitan
+     * empleados
+     */
+    private boolean validRegistro(String id) {
+        for (Empleados empleado : listaEmpleados) {
+            if (empleado.getCodEmpleado().equals(id)) {
                 return false;
             }
         }
         return true;
     }
-   
-    public static void main(String args[]) {
 
+    public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -319,18 +305,7 @@ public class IngresarEmpleados extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void mostrarDatosEmpleadosTabla() {
-        
-        modelo2.setRowCount(0);
-        for (Empleados empleados : listaEmpleados){
-            Object[]fila = new Object[3];
-            fila[0]=empleados.getCodEmpleado();
-            fila[1]=empleados.getNombre();
-            fila[2]=empleados.getTelefono();
-            modelo2.addRow(fila);       
-        }
-    }
-        
-        
-        
+        controlador.mostrarRegistros(listaEmpleados, modelo2);
     }
 
+}

@@ -31,7 +31,6 @@ public class EmpleadoModelImpl implements IEmpleadoModel {
     @Override
     public void modificarRegistro(List<Empleados> listaE, Empleados empleado) {
         int i = 0;
-
         for (Empleados empleados : listaE) {
             if (empleado.getCodEmpleado().equals(empleados.getCodEmpleado())) {
                 listaE.set(i, empleado);
@@ -43,14 +42,13 @@ public class EmpleadoModelImpl implements IEmpleadoModel {
 
     @Override
     public void mostrarRegistros(List<Empleados> listaE, DefaultTableModel modeloT) {
-
-       //Empleados.getCodEm = tablaEmpleados.getValueAt(tablaE.getSelectedRow(), 0).toString();
-        for (Empleados empleado : listaE) {
-            if (empleado.getCodEmpleado().equals(empleado.getCodEmpleado())) {
-
-                break;
-            }
-
+        modeloT.setRowCount(0);
+        for (Empleados empleados : listaE) {
+            Object[] fila = new Object[3];
+            fila[0] = empleados.getCodEmpleado();
+            fila[1] = empleados.getNombre();
+            fila[2] = empleados.getTelefono();
+            modeloT.addRow(fila);
         }
 
     }

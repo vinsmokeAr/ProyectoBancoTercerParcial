@@ -12,18 +12,18 @@ import model.ClienteModelImpl;
 import model.IClienteModel;
 
 public class ClienteController {
-    IClienteModel cliente = new ClienteModelImpl();
+    IClienteModel modelo = new ClienteModelImpl();
     public void agregarRegistro(Cliente cliente){
-        this.cliente.agregarRegistro(cliente);
+        this.modelo.agregarRegistro(cliente);
     }
     public void eliminarRegistro(String rfc){
-        cliente.eliminarRegistro(rfc);
+        this.modelo.eliminarRegistro(rfc);
     }
     public void modificarRegistro(Cliente cliente){
-        this.cliente.modificarRegistro(cliente);
+        this.modelo.modificarRegistro(cliente);
     }
     public void mostrarRegistros(DefaultTableModel modeloT){
-        cliente.mostrarRegistros( modeloT);
+        this.modelo.mostrarRegistros( modeloT);
     }
     
 }
