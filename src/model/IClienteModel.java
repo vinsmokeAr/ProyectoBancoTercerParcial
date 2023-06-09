@@ -5,7 +5,14 @@
 * Descripción: Se creó la interfáz de clientes.
  */
 package model;
+import entity.Cliente;
+import javax.swing.table.DefaultTableModel;
+
+
 
 public interface IClienteModel {
-    
+    void agregarRegistro(Cliente cliente);
+    void eliminarRegistro(String rfc);
+    void modificarRegistro(Cliente cliente);
+    void mostrarRegistros(DefaultTableModel modeloT); 
 }

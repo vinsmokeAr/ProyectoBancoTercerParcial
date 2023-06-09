@@ -13,12 +13,7 @@ import javax.swing.table.DefaultTableModel;
 import model.EmpleadoModelImpl;
 import model.IEmpleadoModel;
 
-
-
-
 public class EmpleadoController {
-
-   
     IEmpleadoModel modelo = new EmpleadoModelImpl();
     
     public void agregarRegistro(List<Empleados> listaE,Empleados empleado){

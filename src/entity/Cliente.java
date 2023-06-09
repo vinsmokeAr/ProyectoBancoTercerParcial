@@ -16,7 +16,7 @@ public class Cliente extends Persona{
         super(nombre, telefono, direccion);
         this.RFC = RFC;
     }
-    
-    
+
+  
 }
 

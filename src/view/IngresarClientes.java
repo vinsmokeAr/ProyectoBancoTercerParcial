@@ -14,23 +14,21 @@ import javax.swing.table.DefaultTableModel;
 import controller.*;
 
 public class IngresarClientes extends javax.swing.JFrame {
+
     ClienteController controlador = new ClienteController();
     private List<Cliente> listaCliente = new ArrayList<>();
     private final DefaultTableModel modelo2;
     String rfcActual;
-    
 
-     /**
+    /**
      * Se inicializó el método cliente
      */
     public IngresarClientes() {
         initComponents();
-        modelo2 = (DefaultTableModel)jTable2.getModel(); 
-
+        modelo2 = (DefaultTableModel) jTable2.getModel();
 
     }
 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -60,12 +58,6 @@ public class IngresarClientes extends javax.swing.JFrame {
 
         nombreCliente.setText("Nombre:");
 
-        ingresarNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresarNombreActionPerformed(evt);
-            }
-        });
-
         direccionCliente.setText("Dirección:");
 
         ingresarDireccion.addActionListener(new java.awt.event.ActionListener() {
@@ -87,11 +79,6 @@ public class IngresarClientes extends javax.swing.JFrame {
         eliminarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 eliminarClienteMouseClicked(evt);
-            }
-        });
-        eliminarCliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarClienteActionPerformed(evt);
             }
         });
 
@@ -216,19 +203,18 @@ public class IngresarClientes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_ingresarDireccionActionPerformed
 
-    
     /**
-     * 
-     * Se creó el método para actualizar los clie 
+     *
+     * Se creó el método para actualizar los clie
      */
     private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
 
-         int i = 0;
-        for(Cliente cliente : listaCliente){
-            if(cliente.getRFC().equals(rfcActual)){
-                listaCliente.set(i,new Cliente(ingresarRFC.getText(), 
-                        ingresarNombre.getText(), 
-                        ingresarTelefono.getText(), 
+        int i = 0;
+        for (Cliente cliente : listaCliente) {
+            if (cliente.getRFC().equals(rfcActual)) {
+                listaCliente.set(i, new Cliente(ingresarRFC.getText(),
+                        ingresarNombre.getText(),
+                        ingresarTelefono.getText(),
                         ingresarDireccion.getText()));
                 break;
             }
@@ -239,14 +225,14 @@ public class IngresarClientes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_botonActualizarActionPerformed
     /**
-     * 
-     * Se creó el método eliminar clientes  
+     *
+     * Se creó el método eliminar clientes
      */
     private void eliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarClienteMouseClicked
 
-        String RFC = jTable2.getValueAt(jTable2.getSelectedRow(),0).toString();
-        for(Cliente cliente : listaCliente){
-            if(cliente.getRFC().compareTo(RFC)==0){
+        String RFC = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+        for (Cliente cliente : listaCliente) {
+            if (cliente.getRFC().compareTo(RFC) == 0) {
                 listaCliente.remove(cliente);
                 mostrarDatosClienteTabla();
                 break;
@@ -255,53 +241,36 @@ public class IngresarClientes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_eliminarClienteMouseClicked
     /**
-     * 
-     * se creó el método 
+     *
+     * se creó el método
      */
     private void guardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarClienteActionPerformed
-        if(validRegistro(rfcActual)){
-            Cliente cliente = new Cliente(this.ingresarRFC.getText(),
-            this.ingresarNombre.getText(),
-            this.ingresarTelefono.getText(),
-            this.ingresarDireccion.getText());
-            listaCliente.add(cliente);
-            mostrarDatosClienteTabla();
-        }else{
-            JOptionPane.showMessageDialog(this, "Este cliente ya existe en el registro.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        Cliente cliente = new Cliente(this.ingresarRFC.getText(),
+                this.ingresarNombre.getText(),
+                this.ingresarTelefono.getText(),
+                this.ingresarDireccion.getText());
+
+        controlador.agregarRegistro(cliente);
+        mostrarDatosClienteTabla();
+
     }//GEN-LAST:event_guardarClienteActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-         rfcActual = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        for(Cliente cliente : listaCliente){
-            if(cliente.getRFC().equals(rfcActual)){
+        rfcActual = jTable2.getValueAt(jTable2.getSelectedRow(), 0)
+                .toString();
+        for (Cliente cliente : listaCliente) {
+            if (cliente.getRFC().equals(rfcActual)) {
                 ingresarRFC.setText(cliente.getRFC());
                 ingresarNombre.setText(cliente.getNombre());
                 ingresarDireccion.setText(cliente.getDireccion());
                 ingresarTelefono.setText(cliente.getTelefono());
-                
+
                 break;
             }
         }
-        
+
     }//GEN-LAST:event_jTable2MouseClicked
 
-    private void eliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_eliminarClienteActionPerformed
-
-    private void ingresarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingresarNombreActionPerformed
-
-    private boolean validRegistro(String id){
-        for(Cliente cliente : listaCliente){
-            if(cliente.getRFC().equals(id)){
-                return false;
-            }
-        }
-        return true;
-    }
     /**
      * @param args the command line arguments
      */
@@ -357,12 +326,12 @@ public class IngresarClientes extends javax.swing.JFrame {
 
     private void mostrarDatosClienteTabla() {
         modelo2.setRowCount(0);
-        for (Cliente cliente : listaCliente){
-            Object[]fila = new Object[3];
-            fila[0]=cliente.getRFC();
-            fila[1]=cliente.getNombre();
-            fila[2]=cliente.getTelefono();
-            modelo2.addRow(fila);       
+        for (Cliente cliente : listaCliente) {
+            Object[] fila = new Object[3];
+            fila[0] = cliente.getRFC();
+            fila[1] = cliente.getNombre();
+            fila[2] = cliente.getTelefono();
+            modelo2.addRow(fila);
         }
     }
 }
