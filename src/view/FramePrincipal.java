@@ -1,19 +1,13 @@
 
 package view;
 
-import javax.swing.ImageIcon;
+// import javax.swing.ImageIcon;
 
 
 public class FramePrincipal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrameInicio
-     */
     public FramePrincipal() {
         initComponents();
-        
-
-
 
     }
 
@@ -58,16 +52,21 @@ public class FramePrincipal extends javax.swing.JFrame {
         salirPrincipal.setBackground(new java.awt.Color(238, 226, 201));
         salirPrincipal.setText("Salir");
         salirPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        salirPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirPrincipalActionPerformed(evt);
+            }
+        });
         loginPanel.add(salirPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 210, 50));
 
         logoClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/credencial.png"))); // NOI18N
         loginPanel.add(logoClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, 70));
 
-        logoEmpleados.setText("skjdf");
-        loginPanel.add(logoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
+        logoEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RegistrarEmpleados.png"))); // NOI18N
+        loginPanel.add(logoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
 
-        logoSalir.setText("jLabel1");
-        loginPanel.add(logoSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, -1));
+        logoSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salir.png"))); // NOI18N
+        loginPanel.add(logoSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
 
         LabelInicioBienestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login.png"))); // NOI18N
         loginPanel.add(LabelInicioBienestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 530));
@@ -84,47 +83,30 @@ public class FramePrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarClientesActionPerformed
-        // TODO add your handling code here:
+      IngresarClientes iClientes = new IngresarClientes();
+      iClientes.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_registrarClientesActionPerformed
 
     private void ingresarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEmpleadosActionPerformed
-        // TODO add your handling code here:
+    IngresarEmpleados iEmpleados = new IngresarEmpleados();
+    iEmpleados.setVisible(true);
+    this.dispose();
     }//GEN-LAST:event_ingresarEmpleadosActionPerformed
+
+    private void salirPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirPrincipalActionPerformed
+       System.exit(WIDTH);
+    }//GEN-LAST:event_salirPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+      
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FramePrincipal().setVisible(true);
