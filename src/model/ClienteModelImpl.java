@@ -38,7 +38,7 @@ public class ClienteModelImpl implements IClienteModel {
         int i = 0;
         for (Cliente cliente1 : listaC){
             if (cliente.getRFC().equals(cliente.getRFC())) {
-                listaC.set(i, cliente);
+                //listaC.set(i, cliente);
                 break;
             }
             i++;

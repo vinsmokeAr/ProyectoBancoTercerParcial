@@ -51,7 +51,7 @@ public class IngresarEmpleados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panelEmpleados.setBackground(new java.awt.Color(255, 204, 102));
+        panelEmpleados.setBackground(new java.awt.Color(36, 86, 96));
         panelEmpleados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingresar Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Source Code Pro ExtraLight", 0, 18))); // NOI18N
 
         empleadoRFC.setText("Código empleado:");
@@ -109,7 +109,7 @@ public class IngresarEmpleados extends javax.swing.JFrame {
             }
         });
 
-        imagenBancoBienestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BancoDelBienestar_logoHor (1).png"))); // NOI18N
+        imagenBancoBienestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BancoDelBienestar_LogoBlanco.png"))); // NOI18N
 
         javax.swing.GroupLayout panelEmpleadosLayout = new javax.swing.GroupLayout(panelEmpleados);
         panelEmpleados.setLayout(panelEmpleadosLayout);
@@ -154,8 +154,8 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         panelEmpleadosLayout.setVerticalGroup(
             panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                .addComponent(imagenBancoBienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addComponent(imagenBancoBienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(empleadoRFC)

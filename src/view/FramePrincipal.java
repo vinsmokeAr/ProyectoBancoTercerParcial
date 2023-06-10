@@ -43,7 +43,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 registrarClientesActionPerformed(evt);
             }
         });
-        loginPanel.add(registrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 180, 210, 50));
+        loginPanel.add(registrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 210, 50));
 
         ingresarEmpleados.setBackground(new java.awt.Color(238, 226, 201));
         ingresarEmpleados.setText("Registrar empleados");
@@ -53,21 +53,21 @@ public class FramePrincipal extends javax.swing.JFrame {
                 ingresarEmpleadosActionPerformed(evt);
             }
         });
-        loginPanel.add(ingresarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 210, 50));
+        loginPanel.add(ingresarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 210, 50));
 
         salirPrincipal.setBackground(new java.awt.Color(238, 226, 201));
         salirPrincipal.setText("Salir");
         salirPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        loginPanel.add(salirPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 210, 50));
+        loginPanel.add(salirPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 210, 50));
 
         logoClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/credencial.png"))); // NOI18N
-        loginPanel.add(logoClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, 80, 60));
+        loginPanel.add(logoClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, 70));
 
         logoEmpleados.setText("skjdf");
         loginPanel.add(logoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, -1, -1));
 
         logoSalir.setText("jLabel1");
-        loginPanel.add(logoSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, -1, -1));
+        loginPanel.add(logoSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, -1));
 
         LabelInicioBienestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login.png"))); // NOI18N
         loginPanel.add(LabelInicioBienestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 530));
