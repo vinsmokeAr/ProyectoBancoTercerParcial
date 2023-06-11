@@ -143,6 +143,11 @@ public class IngresarClientes extends javax.swing.JFrame {
 
         agregarCuenta.setBackground(new java.awt.Color(243, 237, 221));
         agregarCuenta.setText("Agregar");
+        agregarCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                agregarCuentaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelClienteLayout = new javax.swing.GroupLayout(panelCliente);
         panelCliente.setLayout(panelClienteLayout);
@@ -311,6 +316,11 @@ public class IngresarClientes extends javax.swing.JFrame {
     private void ingresarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarDireccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ingresarDireccionActionPerformed
+
+    private void agregarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarCuentaMouseClicked
+        IngresarCuenta iCuenta = new IngresarCuenta(this, true);
+        iCuenta.setVisible(true);
+    }//GEN-LAST:event_agregarCuentaMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
