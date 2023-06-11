@@ -1,4 +1,10 @@
-
+/*
+* Autor: Arleth Machuca Fabian 406
+* Fecha de creación: 09 / junio / 23
+* Fecha de modificación: 11 / junio / 23
+* Descripción: Se creó un jDialog para ingresar las cuentas y el monto inicial 
+* de un cliente.
+*/
 package view;
 
 /**

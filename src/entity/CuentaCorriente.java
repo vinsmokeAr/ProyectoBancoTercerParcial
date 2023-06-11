@@ -1,9 +1,10 @@
 /*
 * Autor: Arleth Machuca Fabian 406
-* Fecha de creación: 30 may. 2023
-* Fecha de modificación: 30 may. 2023
-* Descripción: Se creó la cuenta corriente
- */
+* Fecha de creación: 30 mayo 2023
+* Fecha de modificación: 08 junio 2023
+* Descripción: Se creó la cuenta corriente que hereda atributos de la clase 
+* abstracta cuenta.
+*/
 
 package entity;
 

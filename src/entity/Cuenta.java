@@ -1,3 +1,9 @@
+/*
+* Autor: Arleth Machuca Fabian 406
+* Fecha de creación: 21 mayo 2023
+* Fecha de modificación: 09 junio 2023
+* Descripción: Se realizó la clase abstracta cuenta.
+*/
 package entity;
 
 public abstract class Cuenta {

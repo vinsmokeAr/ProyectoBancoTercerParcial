@@ -1,9 +1,9 @@
 /*
- * Autor: Arleth Machuca Fabian 406
+* Autor: Arleth Machuca Fabian 406
 * fecha de creación: 20 / mayo / 23
- *fecha de modificación: 23 / mayo / 23
+*fecha de modificación: 11 / junio / 23
 * Descripción: Se creó la interfáz de ingresar empleados.
- */
+*/
 package view;
 
 import controller.EmpleadoController;

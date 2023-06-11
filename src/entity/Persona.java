@@ -1,4 +1,9 @@
-
+/*
+* Autor: Arleth Machuca Fabian 406
+* Fecha de creación: 30 mayo 2023
+* Fecha de modificación: 08 junio 2023
+* Descripción: Se creó la cuenta Persona que heredará atributos a las clases empleado y clientes.
+ */
 package entity;
 
 

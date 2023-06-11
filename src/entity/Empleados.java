@@ -1,6 +1,9 @@
 /*
- * Autor: Arleth Machuca Fabian
- */
+* Autor: Arleth Machuca Fabian 406
+* Fecha de creación: 21 mayo 2023
+* Fecha de modificación: 05 junio 2023
+* Descripción: Se creó la cuenta Empleados.
+*/
 package entity;
 
 public class Empleados extends Persona{

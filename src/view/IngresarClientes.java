@@ -1,7 +1,7 @@
 /*
 * Autor: Arleth Machuca Fabian 406
 * Fecha de creación: 17 / mayo / 23
-* Fecha de modificación: 23 / mayo / 23
+* Fecha de modificación: 11 / junio / 23
 * Descripción: Se creó el Frame para ingresar clientes.
 */
 package view;
@@ -12,9 +12,7 @@ import controller.*;
 import javax.swing.JOptionPane;
 
 public class IngresarClientes extends javax.swing.JFrame {
-
     ClienteController controlador = new ClienteController();
-
     private final DefaultTableModel modelo2;
     String rfcActual;
 
@@ -64,12 +62,6 @@ public class IngresarClientes extends javax.swing.JFrame {
 
         direccionCliente.setForeground(new java.awt.Color(255, 255, 255));
         direccionCliente.setText("Dirección:");
-
-        ingresarDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ingresarDireccionActionPerformed(evt);
-            }
-        });
 
         telefonoCliente.setForeground(new java.awt.Color(255, 255, 255));
         telefonoCliente.setText("Teléfono:");
@@ -121,9 +113,9 @@ public class IngresarClientes extends javax.swing.JFrame {
 
         BotonRegresar.setBackground(new java.awt.Color(243, 237, 221));
         BotonRegresar.setText("Regresar");
-        BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonRegresarActionPerformed(evt);
+        BotonRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BotonRegresarMouseClicked(evt);
             }
         });
 
@@ -257,7 +249,7 @@ public class IngresarClientes extends javax.swing.JFrame {
 
     /**
      *
-     * Se creó el método eliminar clientes
+     * Se creó el método eliminar clientes de la tabla
      */
 
     private void eliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarClienteMouseClicked
@@ -271,11 +263,10 @@ public class IngresarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_eliminarClienteMouseClicked
 
     /**
-     * 
-     * Se creó el método para que al seleccionar una celda de la tabla 
-     * 
+     *
+     * Se creó el método para que al seleccionar una celda de la tabla
      */
- 
+
     private void tablaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClientesMouseClicked
         int fila = tablaClientes.getSelectedRow();
         rfcActual = tablaClientes.getValueAt(fila, 0)
@@ -286,13 +277,12 @@ public class IngresarClientes extends javax.swing.JFrame {
         ingresarDireccion.setText(clienteT.getDireccion());
         ingresarTelefono.setText(clienteT.getTelefono());
     }//GEN-LAST:event_tablaClientesMouseClicked
-
-    private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-        FramePrincipal fPrincipal = new FramePrincipal();
-        fPrincipal.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_BotonRegresarActionPerformed
-
+   
+    /**
+     *
+     * Se creó el método para que al seleccionar una celda de la tabla
+     */
+    
     private void guardarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarClienteMouseClicked
         Cliente cliente = new Cliente(this.ingresarRFC.getText(),
                 this.ingresarNombre.getText(),
@@ -303,6 +293,11 @@ public class IngresarClientes extends javax.swing.JFrame {
         mostrarDatosClienteTabla();
     }//GEN-LAST:event_guardarClienteMouseClicked
 
+     /**
+     *
+     * Se creó el método para que al seleccionar una celda de la tabla
+     */
+    
     private void botonActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarMouseClicked
         Cliente cliente = new Cliente(this.ingresarRFC.getText(),
                 this.ingresarNombre.getText(),
@@ -313,14 +308,26 @@ public class IngresarClientes extends javax.swing.JFrame {
         mostrarDatosClienteTabla();
     }//GEN-LAST:event_botonActualizarMouseClicked
 
-    private void ingresarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ingresarDireccionActionPerformed
-
+    /**
+     *
+     * Se creó el método para que al seleccionar una celda de la tabla
+     */
+    
     private void agregarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarCuentaMouseClicked
         IngresarCuenta iCuenta = new IngresarCuenta(this, true);
         iCuenta.setVisible(true);
     }//GEN-LAST:event_agregarCuentaMouseClicked
+
+     /**
+     *
+     * Se creó el método para que al seleccionar una celda de la tabla
+     */
+    
+    private void BotonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRegresarMouseClicked
+        FramePrincipal fPrincipal = new FramePrincipal();
+        fPrincipal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BotonRegresarMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -376,6 +383,11 @@ public class IngresarClientes extends javax.swing.JFrame {
     private javax.swing.JLabel telefonoCliente;
     // End of variables declaration//GEN-END:variables
 
+     /**
+     *
+     * Se creó el método para que al seleccionar una celda de la tabla
+     */
+    
     private void mostrarDatosClienteTabla() {
         controlador.mostrarRegistros(modelo2);
     }
