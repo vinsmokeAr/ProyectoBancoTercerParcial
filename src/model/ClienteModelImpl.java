@@ -28,11 +28,9 @@ public class ClienteModelImpl implements IClienteModel {
     @Override
     public void eliminarRegistro(String rfc) {
         for (Cliente cliente : listaC) {
-            if (cliente.getRFC().compareTo(rfc) == 0) {
+            if (cliente.getRFC().equals(rfc)) {
                 listaC.remove(cliente);
                 break;
-            } else {
-                JOptionPane.showConfirmDialog(null, "¿Está seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
             }
         }
     }

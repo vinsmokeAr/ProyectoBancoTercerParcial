@@ -3,18 +3,18 @@
 * Fecha de creación: 17 / mayo / 23
 * Fecha de modificación: 23 / mayo / 23
 * Descripción: Se creó el Frame para ingresar clientes.
- */
+*/
 package view;
 
 import entity.Cliente;
 import javax.swing.table.DefaultTableModel;
 import controller.*;
-import model.IClienteModel;
+import javax.swing.JOptionPane;
 
 public class IngresarClientes extends javax.swing.JFrame {
 
     ClienteController controlador = new ClienteController();
-   
+
     private final DefaultTableModel modelo2;
     String rfcActual;
 
@@ -23,7 +23,7 @@ public class IngresarClientes extends javax.swing.JFrame {
      */
     public IngresarClientes() {
         initComponents();
-        modelo2 = (DefaultTableModel) jTable2.getModel();
+        modelo2 = (DefaultTableModel) tablaClientes.getModel();
         mostrarDatosClienteTabla();
     }
 
@@ -43,24 +43,38 @@ public class IngresarClientes extends javax.swing.JFrame {
         guardarCliente = new javax.swing.JButton();
         eliminarCliente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tablaClientes = new javax.swing.JTable();
         botonActualizar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        imgBienestar = new javax.swing.JLabel();
         BotonRegresar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaDeCuentas = new javax.swing.JTable();
+        agregarCuenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelCliente.setBackground(new java.awt.Color(4, 92, 76));
         panelCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingresar Clientes", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Source Code Pro ExtraLight", 3, 18))); // NOI18N
 
+        rfc.setForeground(new java.awt.Color(255, 255, 255));
         rfc.setText("RFC:");
 
+        nombreCliente.setForeground(new java.awt.Color(255, 255, 255));
         nombreCliente.setText("Nombre:");
 
+        direccionCliente.setForeground(new java.awt.Color(255, 255, 255));
         direccionCliente.setText("Dirección:");
 
+        ingresarDireccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ingresarDireccionActionPerformed(evt);
+            }
+        });
+
+        telefonoCliente.setForeground(new java.awt.Color(255, 255, 255));
         telefonoCliente.setText("Teléfono:");
 
+        guardarCliente.setBackground(new java.awt.Color(243, 237, 221));
         guardarCliente.setText("Guardar");
         guardarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -68,6 +82,7 @@ public class IngresarClientes extends javax.swing.JFrame {
             }
         });
 
+        eliminarCliente.setBackground(new java.awt.Color(243, 237, 221));
         eliminarCliente.setText("Eliminar");
         eliminarCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -75,7 +90,8 @@ public class IngresarClientes extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaClientes.setBackground(new java.awt.Color(243, 237, 221));
+        tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -86,13 +102,14 @@ public class IngresarClientes extends javax.swing.JFrame {
                 "RFC", "Nombre", "Teléfono"
             }
         ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+        tablaClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
+                tablaClientesMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(tablaClientes);
 
+        botonActualizar.setBackground(new java.awt.Color(243, 237, 221));
         botonActualizar.setText("Actualizar");
         botonActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -100,8 +117,9 @@ public class IngresarClientes extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BancoDelBienestar_LogoBlanco.png"))); // NOI18N
+        imgBienestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BancoDelBienestar_LogoBlanco.png"))); // NOI18N
 
+        BotonRegresar.setBackground(new java.awt.Color(243, 237, 221));
         BotonRegresar.setText("Regresar");
         BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,80 +127,112 @@ public class IngresarClientes extends javax.swing.JFrame {
             }
         });
 
+        tablaDeCuentas.setBackground(new java.awt.Color(243, 237, 221));
+        tablaDeCuentas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Tipo de cuenta", "Monto"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaDeCuentas);
+
+        agregarCuenta.setBackground(new java.awt.Color(243, 237, 221));
+        agregarCuenta.setText("Agregar");
+
         javax.swing.GroupLayout panelClienteLayout = new javax.swing.GroupLayout(panelCliente);
         panelCliente.setLayout(panelClienteLayout);
         panelClienteLayout.setHorizontalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
             .addGroup(panelClienteLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelClienteLayout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())
-                    .addGroup(panelClienteLayout.createSequentialGroup()
-                        .addComponent(guardarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(eliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(51, 51, 51)
-                        .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(panelClienteLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelClienteLayout.createSequentialGroup()
-                                .addComponent(nombreCliente)
-                                .addGap(18, 18, 18)
-                                .addComponent(ingresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelClienteLayout.createSequentialGroup()
-                                .addComponent(rfc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ingresarRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(nombreCliente)
+                            .addComponent(rfc))
                         .addGap(18, 18, 18)
                         .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelClienteLayout.createSequentialGroup()
-                                .addComponent(telefonoCliente)
-                                .addGap(18, 18, 18)
-                                .addComponent(ingresarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ingresarRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(panelClienteLayout.createSequentialGroup()
+                                        .addComponent(telefonoCliente)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ingresarTelefono))
+                                    .addGroup(panelClienteLayout.createSequentialGroup()
+                                        .addComponent(direccionCliente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(ingresarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(35, 35, 35))
                             .addGroup(panelClienteLayout.createSequentialGroup()
-                                .addComponent(direccionCliente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ingresarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(41, 41, 41))
+                                .addComponent(ingresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(panelClienteLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(48, 48, 48)
+                        .addComponent(BotonRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imgBienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelClienteLayout.createSequentialGroup()
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelClienteLayout.createSequentialGroup()
+                        .addGap(46, 206, Short.MAX_VALUE)
+                        .addComponent(eliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelClienteLayout.createSequentialGroup()
+                        .addComponent(guardarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 377, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
             .addGroup(panelClienteLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(BotonRegresar)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(agregarCuenta)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         panelClienteLayout.setVerticalGroup(
             panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotonRegresar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rfc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ingresarRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(direccionCliente)
-                    .addComponent(ingresarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imgBienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelClienteLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BotonRegresar)))
+                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelClienteLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rfc)
+                            .addComponent(direccionCliente)
+                            .addComponent(ingresarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelClienteLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(ingresarRFC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(15, 15, 15)
                 .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreCliente)
                     .addComponent(ingresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(telefonoCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ingresarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(agregarCuenta)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(guardarCliente)
                     .addComponent(eliminarCliente)
                     .addComponent(botonActualizar))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -193,7 +243,7 @@ public class IngresarClientes extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -206,18 +256,31 @@ public class IngresarClientes extends javax.swing.JFrame {
      */
 
     private void eliminarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eliminarClienteMouseClicked
-        String RFC = jTable2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        controlador.eliminarRegistro(RFC);
-        mostrarDatosClienteTabla();
+        int respuesta = JOptionPane.showConfirmDialog(null, "¿Está seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
+        if (respuesta == JOptionPane.YES_OPTION && rfcActual != null) {
+            controlador.eliminarRegistro(rfcActual);
+            mostrarDatosClienteTabla();
+            rfcActual = null;
+        }
+
     }//GEN-LAST:event_eliminarClienteMouseClicked
 
-
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-        rfcActual = jTable2.getValueAt(jTable2.getSelectedRow(), 0)
+    /**
+     * 
+     * Se creó el método para que al seleccionar una celda de la tabla 
+     * 
+     */
+ 
+    private void tablaClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaClientesMouseClicked
+        int fila = tablaClientes.getSelectedRow();
+        rfcActual = tablaClientes.getValueAt(fila, 0)
                 .toString();
         Cliente clienteT = controlador.obtenerCliente(rfcActual);
-
-    }//GEN-LAST:event_jTable2MouseClicked
+        ingresarRFC.setText(clienteT.getRFC());
+        ingresarNombre.setText(clienteT.getNombre());
+        ingresarDireccion.setText(clienteT.getDireccion());
+        ingresarTelefono.setText(clienteT.getTelefono());
+    }//GEN-LAST:event_tablaClientesMouseClicked
 
     private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
         FramePrincipal fPrincipal = new FramePrincipal();
@@ -226,7 +289,6 @@ public class IngresarClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonRegresarActionPerformed
 
     private void guardarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarClienteMouseClicked
-    
         Cliente cliente = new Cliente(this.ingresarRFC.getText(),
                 this.ingresarNombre.getText(),
                 this.ingresarTelefono.getText(),
@@ -234,20 +296,21 @@ public class IngresarClientes extends javax.swing.JFrame {
 
         controlador.agregarRegistro(cliente);
         mostrarDatosClienteTabla();
-    
     }//GEN-LAST:event_guardarClienteMouseClicked
 
     private void botonActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarMouseClicked
-        Cliente clientes = new Cliente(this.ingresarRFC.getText(),
+        Cliente cliente = new Cliente(this.ingresarRFC.getText(),
                 this.ingresarNombre.getText(),
                 this.ingresarTelefono.getText(),
                 this.ingresarDireccion.getText());
 
-        controlador.modificarRegistro(clientes);
+        controlador.modificarRegistro(cliente);
         mostrarDatosClienteTabla();
     }//GEN-LAST:event_botonActualizarMouseClicked
 
-
+    private void ingresarDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarDireccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ingresarDireccionActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -283,20 +346,23 @@ public class IngresarClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonRegresar;
+    private javax.swing.JButton agregarCuenta;
     private javax.swing.JButton botonActualizar;
     private javax.swing.JLabel direccionCliente;
     private javax.swing.JButton eliminarCliente;
     private javax.swing.JButton guardarCliente;
+    private javax.swing.JLabel imgBienestar;
     private javax.swing.JTextField ingresarDireccion;
     private javax.swing.JTextField ingresarNombre;
     private javax.swing.JTextField ingresarRFC;
     private javax.swing.JTextField ingresarTelefono;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable2;
     private javax.swing.JLabel nombreCliente;
     private javax.swing.JPanel panelCliente;
     private javax.swing.JLabel rfc;
+    private javax.swing.JTable tablaClientes;
+    private javax.swing.JTable tablaDeCuentas;
     private javax.swing.JLabel telefonoCliente;
     // End of variables declaration//GEN-END:variables
 

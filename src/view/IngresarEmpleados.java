@@ -247,7 +247,8 @@ public class IngresarEmpleados extends javax.swing.JFrame {
 
     /**
      *
-     * Se creó el método con Mouse Clicked del botón actualizar empleados
+     * Se creó el método events Mouse Clicked del botón actualizar para que actualice los datos de los 
+     * empleados 
      */
 
     private void actualizarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizarEmpleadosMouseClicked
@@ -259,12 +260,11 @@ public class IngresarEmpleados extends javax.swing.JFrame {
 
         // Aqui actualiza 
         controlador.modificarRegistro(listaEmpleados, empleado);
-
         mostrarDatosEmpleadosTabla();
     }//GEN-LAST:event_actualizarEmpleadosMouseClicked
     /**
      *
-     * Se inicializó el método para
+     * Se inicializó el método para obtener la información de los empleados
      */
     private void tablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadosMouseClicked
         codEmpActual = tablaEmpleados.getValueAt(tablaEmpleados.getSelectedRow(), 0).toString();
