@@ -25,5 +25,7 @@ public class ClienteController {
     public void mostrarRegistros(DefaultTableModel modeloT){
         this.modelo.mostrarRegistros( modeloT);
     }
-    
+    public Cliente obtenerCliente(String rfc){   
+        return  this.modelo.obtenerRegistro(rfc);
+    } 
 }

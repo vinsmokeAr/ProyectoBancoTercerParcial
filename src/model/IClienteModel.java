@@ -15,4 +15,5 @@ public interface IClienteModel {
     void eliminarRegistro(String rfc);
     void modificarRegistro(Cliente cliente);
     void mostrarRegistros(DefaultTableModel modeloT); 
+    Cliente obtenerRegistro(String rfc);
 }

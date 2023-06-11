@@ -148,9 +148,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="ingresarRFC">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresarRFCActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="nombreCliente">
           <Properties>
@@ -178,7 +175,7 @@
             <Property name="text" type="java.lang.String" value="Guardar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="guardarClienteActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="guardarClienteMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="eliminarCliente">
@@ -239,7 +236,7 @@
             <Property name="text" type="java.lang.String" value="Actualizar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonActualizarActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonActualizarMouseClicked"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">

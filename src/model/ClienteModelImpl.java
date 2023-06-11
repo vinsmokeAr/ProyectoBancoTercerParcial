@@ -18,7 +18,11 @@ public class ClienteModelImpl implements IClienteModel {
 
     @Override
     public void agregarRegistro(Cliente cliente) {
-       listaC.add(cliente);
+        if (validRegistro(cliente.getRFC())) {
+            listaC.add(cliente);
+        } else {
+            JOptionPane.showMessageDialog(null, "Este cliente ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     @Override
@@ -28,15 +32,15 @@ public class ClienteModelImpl implements IClienteModel {
                 listaC.remove(cliente);
                 break;
             } else {
-            JOptionPane.showConfirmDialog(null, "¿Está seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
-        }
+                JOptionPane.showConfirmDialog(null, "¿Está seguro?", "Alerta!", JOptionPane.YES_NO_OPTION);
+            }
         }
     }
 
     @Override
     public void modificarRegistro(Cliente cliente) {
         int i = 0;
-        for (Cliente cliente1 : listaC){
+        for (Cliente cliente1 : listaC) {
             if (cliente.getRFC().equals(cliente.getRFC())) {
                 //listaC.set(i, cliente);
                 break;
@@ -47,7 +51,7 @@ public class ClienteModelImpl implements IClienteModel {
 
     @Override
     public void mostrarRegistros(DefaultTableModel modeloT) {
-         modeloT.setRowCount(0);
+        modeloT.setRowCount(0);
         for (Cliente cliente : listaC) {
             Object[] fila = new Object[3];
             fila[0] = cliente.getRFC();
@@ -57,5 +61,22 @@ public class ClienteModelImpl implements IClienteModel {
         }
     }
 
-   
+    private boolean validRegistro(String id) {
+        for (Cliente cliente : listaC) {
+            if (cliente.getRFC().equals(id)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public Cliente obtenerRegistro(String rfc) {
+            for (Cliente cliente : listaC) {
+            if (cliente.getRFC().equals(rfc)) {
+                return cliente;
+            }
+        }
+        return null;
+    }
 }
