@@ -29,53 +29,46 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         loginPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        registrarClientes.setBackground(new java.awt.Color(238, 226, 201));
-        registrarClientes.setText("Registrar clientes");
-        registrarClientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registrarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RegustrarClientes.png"))); // NOI18N
+        registrarClientes.setBorder(null);
         registrarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarClientesActionPerformed(evt);
             }
         });
-        loginPanel.add(registrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 210, 50));
+        loginPanel.add(registrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 130, 40));
 
-        ingresarEmpleados.setBackground(new java.awt.Color(238, 226, 201));
-        ingresarEmpleados.setText("Registrar empleados");
-        ingresarEmpleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ingresarEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RegistrarE.png"))); // NOI18N
+        ingresarEmpleados.setBorder(null);
         ingresarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ingresarEmpleadosActionPerformed(evt);
             }
         });
-        loginPanel.add(ingresarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 210, 50));
+        loginPanel.add(ingresarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
 
-        salirPrincipal.setBackground(new java.awt.Color(238, 226, 201));
-        salirPrincipal.setText("Salir");
-        salirPrincipal.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        salirPrincipal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirPrincipalActionPerformed(evt);
-            }
-        });
-        loginPanel.add(salirPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 210, 50));
+        salirPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/SalirP.png"))); // NOI18N
+        salirPrincipal.setBorder(null);
+        loginPanel.add(salirPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 130, -1));
 
         logoClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/credencial.png"))); // NOI18N
-        loginPanel.add(logoClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, 70));
+        loginPanel.add(logoClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, 70));
 
         logoEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/RegistrarEmpleados.png"))); // NOI18N
-        loginPanel.add(logoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+        loginPanel.add(logoEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, -1, -1));
 
         logoSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/salir.png"))); // NOI18N
-        loginPanel.add(logoSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
+        loginPanel.add(logoSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 360, -1, -1));
 
+        LabelInicioBienestar.setBackground(new java.awt.Color(255, 255, 255));
         LabelInicioBienestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Login.png"))); // NOI18N
-        loginPanel.add(LabelInicioBienestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 530));
+        loginPanel.add(LabelInicioBienestar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(loginPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,10 +90,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     iEmpleados.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_ingresarEmpleadosActionPerformed
-
-    private void salirPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirPrincipalActionPerformed
-       System.exit(WIDTH);
-    }//GEN-LAST:event_salirPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
