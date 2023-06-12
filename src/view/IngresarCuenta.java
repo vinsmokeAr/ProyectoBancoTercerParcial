@@ -70,7 +70,8 @@ public class IngresarCuenta extends javax.swing.JDialog {
 
         elegirCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta ahorro", "Cuenta corriente", "Cuenta nómina", " " }));
 
-        jButton1.setText("Aceptar");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Agregar.png"))); // NOI18N
+        jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -92,7 +93,7 @@ public class IngresarCuenta extends javax.swing.JDialog {
                     .addComponent(ingresarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(elegirCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(layout.createSequentialGroup()
-                .addGap(94, 94, 94)
+                .addGap(104, 104, 104)
                 .addComponent(jButton1))
         );
         layout.setVerticalGroup(
@@ -107,9 +108,9 @@ public class IngresarCuenta extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ingresarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(montoInicial))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         pack();

@@ -49,6 +49,11 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         salirPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/SalirP.png"))); // NOI18N
         salirPrincipal.setBorder(null);
+        salirPrincipal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salirPrincipalMouseClicked(evt);
+            }
+        });
         loginPanel.add(salirPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, 130, -1));
 
         logoClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/credencial.png"))); // NOI18N
@@ -90,6 +95,10 @@ public class FramePrincipal extends javax.swing.JFrame {
     iEmpleados.setVisible(true);
     this.dispose();
     }//GEN-LAST:event_ingresarEmpleadosActionPerformed
+
+    private void salirPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirPrincipalMouseClicked
+        
+    }//GEN-LAST:event_salirPrincipalMouseClicked
 
     /**
      * @param args the command line arguments

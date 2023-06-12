@@ -34,34 +34,122 @@ public class IngresarEmpleados extends javax.swing.JFrame {
     private void initComponents() {
 
         javax.swing.JPanel panelEmpleados = new javax.swing.JPanel();
-        empleadoRFC = new javax.swing.JLabel();
-        empleadosNombre = new javax.swing.JLabel();
-        empleadosDireccion = new javax.swing.JLabel();
-        empleadosTelefono = new javax.swing.JLabel();
+        botonRegresar = new javax.swing.JButton();
+        imgEmpleados = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        guardarEmpleados = new javax.swing.JButton();
+        eliminarEmpleados = new javax.swing.JButton();
+        actualizarEmpleados = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         ingresarRFCempleados = new javax.swing.JTextField();
         ingresarNombreEmpleados = new javax.swing.JTextField();
         ingresarDireccionEmpleados = new javax.swing.JTextField();
         ingresarTelefonoEmpleados = new javax.swing.JTextField();
+        empleadoRFC = new javax.swing.JLabel();
+        empleadosNombre = new javax.swing.JLabel();
+        empleadosDireccion = new javax.swing.JLabel();
+        empleadosTelefono = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaEmpleados = new javax.swing.JTable();
-        guardarEmpleados = new javax.swing.JButton();
-        eliminarEmpleados = new javax.swing.JButton();
-        actualizarEmpleados = new javax.swing.JButton();
-        imagenBancoBienestar = new javax.swing.JLabel();
-        botonRegresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelEmpleados.setBackground(new java.awt.Color(4, 92, 76));
-        panelEmpleados.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ingresar Empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Source Code Pro ExtraLight", 0, 18))); // NOI18N
 
-        empleadoRFC.setText("Código empleado:");
+        botonRegresar.setBackground(new java.awt.Color(4, 92, 76));
+        botonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.png"))); // NOI18N
+        botonRegresar.setBorder(null);
+        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRegresarActionPerformed(evt);
+            }
+        });
 
-        empleadosNombre.setText("Nombre:");
+        imgEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AvatarEmpleada2.png"))); // NOI18N
 
-        empleadosDireccion.setText("Dirección:");
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cambiar fotografía:");
 
-        empleadosTelefono.setText("Teléfono:");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CargarFotoUsuario.png"))); // NOI18N
+
+        guardarEmpleados.setBackground(new java.awt.Color(4, 92, 76));
+        guardarEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonCaféGuardar.png"))); // NOI18N
+        guardarEmpleados.setBorder(null);
+        guardarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                guardarEmpleadosMouseClicked(evt);
+            }
+        });
+
+        eliminarEmpleados.setBackground(new java.awt.Color(4, 92, 76));
+        eliminarEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonCaféEliminar.png"))); // NOI18N
+        eliminarEmpleados.setBorder(null);
+        eliminarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                eliminarEmpleadosMouseClicked(evt);
+            }
+        });
+
+        actualizarEmpleados.setBackground(new java.awt.Color(4, 92, 76));
+        actualizarEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonCaféActualizar.png"))); // NOI18N
+        actualizarEmpleados.setBorder(null);
+        actualizarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                actualizarEmpleadosMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEmpleadosLayout = new javax.swing.GroupLayout(panelEmpleados);
+        panelEmpleados.setLayout(panelEmpleadosLayout);
+        panelEmpleadosLayout.setHorizontalGroup(
+            panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(botonRegresar))
+                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(32, 32, 32)
+                                .addComponent(jButton1))
+                            .addComponent(imgEmpleados))))
+                .addContainerGap(30, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmpleadosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(guardarEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(eliminarEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(actualizarEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(59, 59, 59))
+        );
+        panelEmpleadosLayout.setVerticalGroup(
+            panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(botonRegresar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(imgEmpleados)
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel1))
+                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
+                        .addGap(272, 272, 272)
+                        .addComponent(jButton1)))
+                .addGap(18, 18, 18)
+                .addComponent(guardarEmpleados)
+                .addGap(29, 29, 29)
+                .addComponent(eliminarEmpleados)
+                .addGap(29, 29, 29)
+                .addComponent(actualizarEmpleados)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de los empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         ingresarRFCempleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -71,12 +159,28 @@ public class IngresarEmpleados extends javax.swing.JFrame {
 
         ingresarTelefonoEmpleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        empleadoRFC.setBackground(new java.awt.Color(248, 147, 31));
+        empleadoRFC.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        empleadoRFC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PlantillaLabel.png"))); // NOI18N
+        empleadoRFC.setText("Código empleado:");
+        empleadoRFC.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        empleadosNombre.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        empleadosNombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/PlantillaLabel.png"))); // NOI18N
+        empleadosNombre.setText("Nombre:");
+        empleadosNombre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        empleadosDireccion.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        empleadosDireccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/DireccionE.png"))); // NOI18N
+
+        empleadosTelefono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/TeléfonoE.png"))); // NOI18N
+
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "RFC", "Nombre", "Teléfono"
+                "Cod. Empleado", "Nombre", "Teléfono"
             }
         ));
         tablaEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,123 +190,75 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaEmpleados);
 
-        guardarEmpleados.setText("Guardar");
-        guardarEmpleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        guardarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                guardarEmpleadosMouseClicked(evt);
-            }
-        });
-
-        eliminarEmpleados.setText("Eliminar");
-        eliminarEmpleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        eliminarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                eliminarEmpleadosMouseClicked(evt);
-            }
-        });
-
-        actualizarEmpleados.setText("Actualizar");
-        actualizarEmpleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        actualizarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                actualizarEmpleadosMouseClicked(evt);
-            }
-        });
-
-        imagenBancoBienestar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/BancoDelBienestar_LogoBlanco.png"))); // NOI18N
-
-        botonRegresar.setText("Regresar");
-        botonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRegresarActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelEmpleadosLayout = new javax.swing.GroupLayout(panelEmpleados);
-        panelEmpleados.setLayout(panelEmpleadosLayout);
-        panelEmpleadosLayout.setHorizontalGroup(
-            panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmpleadosLayout.createSequentialGroup()
-                .addComponent(imagenBancoBienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70))
-            .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                                .addComponent(empleadosNombre)
-                                .addGap(94, 94, 94)
-                                .addComponent(ingresarNombreEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                                .addComponent(empleadoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ingresarRFCempleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(53, 53, 53)
-                        .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(empleadosDireccion)
-                            .addComponent(empleadosTelefono))
-                        .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(ingresarTelefonoEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ingresarDireccionEmpleados))))
-                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                                .addComponent(guardarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addComponent(eliminarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(actualizarEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(botonRegresar)))
-                .addGap(35, 35, 35))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(empleadosNombre)
+                            .addComponent(empleadoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ingresarRFCempleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ingresarNombreEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(empleadosTelefono)
+                            .addComponent(empleadosDireccion))
+                        .addGap(49, 49, 49)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ingresarTelefonoEmpleados)
+                            .addComponent(ingresarDireccionEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
-        panelEmpleadosLayout.setVerticalGroup(
-            panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(botonRegresar)
-                .addGap(23, 23, 23)
-                .addComponent(imagenBancoBienestar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(empleadoRFC)
-                    .addComponent(ingresarRFCempleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(empleadosDireccion)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(empleadoRFC)
+                        .addComponent(ingresarRFCempleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(empleadosDireccion))
                     .addComponent(ingresarDireccionEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(empleadosNombre)
-                    .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ingresarNombreEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(empleadosNombre)
+                        .addComponent(ingresarNombreEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(empleadosTelefono)
                         .addComponent(ingresarTelefonoEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(guardarEmpleados)
-                    .addComponent(eliminarEmpleados)
-                    .addComponent(actualizarEmpleados))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
+
+        empleadoRFC.getAccessibleContext().setAccessibleName("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -319,11 +375,14 @@ public class IngresarEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel empleadosNombre;
     private javax.swing.JLabel empleadosTelefono;
     private javax.swing.JButton guardarEmpleados;
-    private javax.swing.JLabel imagenBancoBienestar;
+    private javax.swing.JLabel imgEmpleados;
     private javax.swing.JTextField ingresarDireccionEmpleados;
     private javax.swing.JTextField ingresarNombreEmpleados;
     private javax.swing.JTextField ingresarRFCempleados;
     private javax.swing.JTextField ingresarTelefonoEmpleados;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
