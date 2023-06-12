@@ -7,8 +7,10 @@
 */
 package entity;
 
-//import java.util.ArrayList;
-
+     /**
+     *
+     * Se creó la clase persona que hereda atributos de la clase persona
+     */
 public class Cliente extends Persona{
     private String RFC;
 

@@ -67,11 +67,6 @@ public class IngresarClientes extends javax.swing.JFrame {
                 BotonRegresarMouseClicked(evt);
             }
         });
-        BotonRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonRegresarActionPerformed(evt);
-            }
-        });
 
         cargarImagenUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CargarFotoUsuario.png"))); // NOI18N
         cargarImagenUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,7 +319,7 @@ public class IngresarClientes extends javax.swing.JFrame {
    
     /**
      *
-     * Se creó el método para que al seleccionar una celda de la tabla
+     * Se creó el método para guardar la información del cliente
      */
     
     private void guardarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarClienteMouseClicked
@@ -339,7 +334,7 @@ public class IngresarClientes extends javax.swing.JFrame {
 
      /**
      *
-     * Se creó el método para que al seleccionar una celda de la tabla
+     * Se creó el método para actualizar la información del cliente
      */
     
     private void botonActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonActualizarMouseClicked
@@ -354,7 +349,8 @@ public class IngresarClientes extends javax.swing.JFrame {
 
     /**
      *
-     * Se creó el método para que al seleccionar una celda de la tabla
+     * Se creó el método para dirigir al jDialog y así agregar una cuenta al 
+     * cliente
      */
     
     private void agregarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarCuentaMouseClicked
@@ -364,7 +360,7 @@ public class IngresarClientes extends javax.swing.JFrame {
 
      /**
      *
-     * Se creó el método para que al seleccionar una celda de la tabla
+     * Se creó el método para regresar al menú principal
      */
     
     private void BotonRegresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotonRegresarMouseClicked
@@ -372,7 +368,10 @@ public class IngresarClientes extends javax.swing.JFrame {
         fPrincipal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BotonRegresarMouseClicked
-
+     /**
+     *
+     * Se creó el método para importar una imagen de usuario
+     */
     private void cargarImagenUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cargarImagenUsuarioMouseClicked
         JFileChooser jF = new JFileChooser();
         jF.setMultiSelectionEnabled(false);
@@ -380,10 +379,6 @@ public class IngresarClientes extends javax.swing.JFrame {
             rsdragdropfiles.RSDragDropFiles.setCopiar( jF.getSelectedFile().toString(), "src/img/AvatarMujer.png" );
             fotoUsuario.setIcon(new ImageIcon(jF.getSelectedFile().toString()));
     }//GEN-LAST:event_cargarImagenUsuarioMouseClicked
-
-    private void BotonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegresarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonRegresarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -444,7 +439,7 @@ public class IngresarClientes extends javax.swing.JFrame {
 
      /**
      *
-     * Se creó el método para que al seleccionar una celda de la tabla
+     * Se creó el método para mostrar los datos del cliente en la tabla
      */
     
     private void mostrarDatosClienteTabla() {

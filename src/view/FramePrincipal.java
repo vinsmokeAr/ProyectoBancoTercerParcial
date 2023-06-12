@@ -1,8 +1,10 @@
-
+/*
+* Autor: Arleth Machuca Fabian 406
+* Fecha de creación: 19 / mayo / 23
+* Fecha de modificación: 11 / junio / 23
+* Descripción: Se creó el Frame para el Frame Principal.
+ */
 package view;
-
-// import javax.swing.ImageIcon;
-
 
 public class FramePrincipal extends javax.swing.JFrame {
 
@@ -11,7 +13,6 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -83,28 +84,40 @@ public class FramePrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+   
+    /**
+     * Se creó el método que dirigirá al Frame para registrar clientes
+     */
+    
     private void registrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarClientesActionPerformed
-      IngresarClientes iClientes = new IngresarClientes();
-      iClientes.setVisible(true);
-      this.dispose();
+        IngresarClientes iClientes = new IngresarClientes();
+        iClientes.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registrarClientesActionPerformed
-
+   
+    /**
+     * Se creó el método que dirigirá al Frame para registrar empleados
+     */
+    
     private void ingresarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingresarEmpleadosActionPerformed
-    IngresarEmpleados iEmpleados = new IngresarEmpleados();
-    iEmpleados.setVisible(true);
-    this.dispose();
+        IngresarEmpleados iEmpleados = new IngresarEmpleados();
+        iEmpleados.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_ingresarEmpleadosActionPerformed
-
+    
+    /**
+     * Se creó el método que dirigirá al Frame para salir del programa
+     */
+    
     private void salirPrincipalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salirPrincipalMouseClicked
-        
+        System.exit(WIDTH);
     }//GEN-LAST:event_salirPrincipalMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-      
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FramePrincipal().setVisible(true);

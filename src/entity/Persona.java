@@ -7,6 +7,10 @@
 package entity;
 
 
+/**
+ * 
+ * Se creó la clase persona, la cual heredará atributos a empleados y clientes
+ */
 public class Persona {
    
    private String nombre;

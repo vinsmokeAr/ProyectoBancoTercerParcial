@@ -3,13 +3,15 @@
 * fecha de creación: 20 / mayo / 23
 *fecha de modificación: 11 / junio / 23
 * Descripción: Se creó la interfáz de ingresar empleados.
-*/
+ */
 package view;
 
 import controller.EmpleadoController;
 import entity.Empleados;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,12 +38,12 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         javax.swing.JPanel panelEmpleados = new javax.swing.JPanel();
         botonRegresar = new javax.swing.JButton();
         imgEmpleados = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        cambiarFoto = new javax.swing.JLabel();
+        botonImagen = new javax.swing.JButton();
         guardarEmpleados = new javax.swing.JButton();
         eliminarEmpleados = new javax.swing.JButton();
         actualizarEmpleados = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
+        panelNumerodos = new javax.swing.JPanel();
         ingresarRFCempleados = new javax.swing.JTextField();
         ingresarNombreEmpleados = new javax.swing.JTextField();
         ingresarDireccionEmpleados = new javax.swing.JTextField();
@@ -68,10 +70,15 @@ public class IngresarEmpleados extends javax.swing.JFrame {
 
         imgEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AvatarEmpleada2.png"))); // NOI18N
 
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cambiar fotografía:");
+        cambiarFoto.setForeground(new java.awt.Color(255, 255, 255));
+        cambiarFoto.setText("Cambiar fotografía:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CargarFotoUsuario.png"))); // NOI18N
+        botonImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CargarFotoUsuario.png"))); // NOI18N
+        botonImagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonImagenMouseClicked(evt);
+            }
+        });
 
         guardarEmpleados.setBackground(new java.awt.Color(4, 92, 76));
         guardarEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonCaféGuardar.png"))); // NOI18N
@@ -113,9 +120,10 @@ public class IngresarEmpleados extends javax.swing.JFrame {
                         .addGap(43, 43, 43)
                         .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(32, 32, 32)
-                                .addComponent(jButton1))
+                                .addGap(9, 9, 9)
+                                .addComponent(cambiarFoto)
+                                .addGap(18, 18, 18)
+                                .addComponent(botonImagen))
                             .addComponent(imgEmpleados))))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmpleadosLayout.createSequentialGroup()
@@ -129,18 +137,17 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         panelEmpleadosLayout.setVerticalGroup(
             panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(11, 11, 11)
+                .addComponent(botonRegresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addComponent(botonRegresar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(imgEmpleados)
-                        .addGap(48, 48, 48)
-                        .addComponent(jLabel1))
-                    .addGroup(panelEmpleadosLayout.createSequentialGroup()
-                        .addGap(272, 272, 272)
-                        .addComponent(jButton1)))
-                .addGap(18, 18, 18)
+                        .addGap(37, 37, 37)
+                        .addComponent(cambiarFoto)
+                        .addGap(11, 11, 11))
+                    .addComponent(botonImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addComponent(guardarEmpleados)
                 .addGap(29, 29, 29)
                 .addComponent(eliminarEmpleados)
@@ -149,7 +156,7 @@ public class IngresarEmpleados extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de los empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
+        panelNumerodos.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos de los empleados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 18))); // NOI18N
 
         ingresarRFCempleados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -190,50 +197,51 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tablaEmpleados);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(empleadosNombre)
-                            .addComponent(empleadoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout panelNumerodosLayout = new javax.swing.GroupLayout(panelNumerodos);
+        panelNumerodos.setLayout(panelNumerodosLayout);
+        panelNumerodosLayout.setHorizontalGroup(
+            panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNumerodosLayout.createSequentialGroup()
+                .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelNumerodosLayout.createSequentialGroup()
+                        .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelNumerodosLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(empleadoRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(empleadosNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(ingresarRFCempleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(ingresarNombreEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(66, 66, 66)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(46, 46, 46)
+                        .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(empleadosTelefono)
                             .addComponent(empleadosDireccion))
                         .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ingresarTelefonoEmpleados)
                             .addComponent(ingresarDireccionEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(panelNumerodosLayout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelNumerodosLayout.setVerticalGroup(
+            panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelNumerodosLayout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(empleadoRFC)
                         .addComponent(ingresarRFCempleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(empleadosDireccion))
                     .addComponent(ingresarDireccionEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(empleadosNombre)
                         .addComponent(ingresarNombreEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(panelNumerodosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(empleadosTelefono)
                         .addComponent(ingresarTelefonoEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
@@ -250,15 +258,15 @@ public class IngresarEmpleados extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelNumerodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(panelNumerodos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 2, Short.MAX_VALUE))
         );
 
         pack();
@@ -303,8 +311,8 @@ public class IngresarEmpleados extends javax.swing.JFrame {
 
     /**
      *
-     * Se creó el método events Mouse Clicked del botón actualizar para que actualice los datos de los 
-     * empleados 
+     * Se creó el método events Mouse Clicked del botón actualizar para que
+     * actualice los datos de los empleados
      */
 
     private void actualizarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_actualizarEmpleadosMouseClicked
@@ -335,13 +343,28 @@ public class IngresarEmpleados extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
-
+     /**
+     *
+     * Se creó el método para regresar al menú principal
+     */
     private void botonRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegresarActionPerformed
-       FramePrincipal fPrincipal = new FramePrincipal();
-       fPrincipal.setVisible(true);
-       this.dispose();
-        
+        FramePrincipal fPrincipal = new FramePrincipal();
+        fPrincipal.setVisible(true);
+        this.dispose();
+
     }//GEN-LAST:event_botonRegresarActionPerformed
+     
+    /**
+     *
+     * Se creó el método para importar una imagen de usuario
+     */
+    
+    private void botonImagenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonImagenMouseClicked
+        JFileChooser jF = new JFileChooser();
+        jF.setMultiSelectionEnabled(false);
+        if (jF.showOpenDialog(this) == JFileChooser.APPROVE_OPTION);
+        imgEmpleados.setIcon(new ImageIcon(jF.getSelectedFile().toString()));
+    }//GEN-LAST:event_botonImagenMouseClicked
 
     /**
      *
@@ -368,7 +391,9 @@ public class IngresarEmpleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizarEmpleados;
+    private javax.swing.JButton botonImagen;
     private javax.swing.JButton botonRegresar;
+    private javax.swing.JLabel cambiarFoto;
     private javax.swing.JButton eliminarEmpleados;
     private javax.swing.JLabel empleadoRFC;
     private javax.swing.JLabel empleadosDireccion;
@@ -380,13 +405,16 @@ public class IngresarEmpleados extends javax.swing.JFrame {
     private javax.swing.JTextField ingresarNombreEmpleados;
     private javax.swing.JTextField ingresarRFCempleados;
     private javax.swing.JTextField ingresarTelefonoEmpleados;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelNumerodos;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
-
+    
+    /**
+     *
+     * Se creó el método para mostrar los datos del cliente en la tabla
+     */
+    
     private void mostrarDatosEmpleadosTabla() {
         controlador.mostrarRegistros(listaEmpleados, modelo2);
     }

@@ -6,6 +6,11 @@
 */
 package entity;
 
+/**
+ * 
+ * Se creó la clase empleados, la cual heredará atributos de la clase persona
+ */
+
 public class Empleados extends Persona{
     String codEmpleado;
     
