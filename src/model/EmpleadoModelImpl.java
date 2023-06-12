@@ -11,12 +11,20 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class EmpleadoModelImpl implements IEmpleadoModel {
-
+        /**
+     *
+     * Se implementó el método de la interfáz de empleado para 
+     * agregar el registro de un empleado
+     */
     @Override
     public void agregarRegistro(List<Empleados> listaE, Empleados empleado) {
         listaE.add(empleado);
     }
-
+    /**
+     *
+     *  Se implementó el método de la interfáz de empleado para eliminar
+     * el registro de un empleado
+     */
     @Override
     public void eliminarRegistro(List<Empleados> listaE, String cod) {
         for (Empleados empleados : listaE) {
@@ -27,7 +35,11 @@ public class EmpleadoModelImpl implements IEmpleadoModel {
             }
         }
     }
-
+    /**
+     *
+     *  Se implementó el método de la interfáz de empleado para
+     * modificar el registro de un empleado
+     */
     @Override
     public void modificarRegistro(List<Empleados> listaE, Empleados empleado) {
         int i = 0;
@@ -39,7 +51,11 @@ public class EmpleadoModelImpl implements IEmpleadoModel {
             i++;
         }
     }
-
+    /**
+     *
+     *  Se implementó el método de la interfáz de empleado para
+     * mostrar el registro de un empleado
+     */
     @Override
     public void mostrarRegistros(List<Empleados> listaE, DefaultTableModel modeloT) {
         modeloT.setRowCount(0);

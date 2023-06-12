@@ -12,10 +12,20 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ *
+ * Se creó la clase de cliente model implements, a la cual se le implementará la
+ * interfáz del cliente
+ */
 public class ClienteModelImpl implements IClienteModel {
 
     List<Cliente> listaC = new ArrayList<>();
 
+    /**
+     *
+     * Se creó la clase de cliente model implements, a la cual se le
+     * implementará la interfáz del cliente
+     */
     @Override
     public void agregarRegistro(Cliente cliente) {
         if (validRegistro(cliente.getRFC())) {
@@ -25,6 +35,10 @@ public class ClienteModelImpl implements IClienteModel {
         }
     }
 
+    /**
+     *
+     * Se creó el método para eliminar el registro de un cliente
+     */
     @Override
     public void eliminarRegistro(String rfc) {
         for (Cliente cliente : listaC) {
@@ -35,6 +49,10 @@ public class ClienteModelImpl implements IClienteModel {
         }
     }
 
+    /**
+     *
+     * Se creó el método para modificar el registro de un cliente
+     */
     @Override
     public void modificarRegistro(Cliente cliente) {
         int i = 0;
@@ -47,6 +65,11 @@ public class ClienteModelImpl implements IClienteModel {
         }
     }
 
+    /**
+     *
+     * Se creó el método para mostrar en la tabla el registro de un cliente
+     *
+     */
     @Override
     public void mostrarRegistros(DefaultTableModel modeloT) {
         modeloT.setRowCount(0);
@@ -59,6 +82,10 @@ public class ClienteModelImpl implements IClienteModel {
         }
     }
 
+    /**
+     *
+     * Se creó el método para validar el registro de un cliente
+     */
     private boolean validRegistro(String id) {
         for (Cliente cliente : listaC) {
             if (cliente.getRFC().equals(id)) {
@@ -68,9 +95,14 @@ public class ClienteModelImpl implements IClienteModel {
         return true;
     }
 
+    /**
+     *
+     * Se creó el método para obtener el registro de un cliente
+     *
+     */
     @Override
     public Cliente obtenerRegistro(String rfc) {
-            for (Cliente cliente : listaC) {
+        for (Cliente cliente : listaC) {
             if (cliente.getRFC().equals(rfc)) {
                 return cliente;
             }
