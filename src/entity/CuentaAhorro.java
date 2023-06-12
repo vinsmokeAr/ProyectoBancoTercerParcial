@@ -8,6 +8,8 @@
 
 package entity;
 
+import javax.swing.JOptionPane;
+
 
 public class CuentaAhorro extends Cuenta {
 
@@ -34,7 +36,7 @@ public class CuentaAhorro extends Cuenta {
         // Realizar el retiro
         saldo -= monto;
     } else {
-        System.out.println("Saldo insuficiente para realizar el retiro. Tu saldo es: " + getSaldo());
+        JOptionPane.showInputDialog(null, "saldo insuficiente");
     }
     }
 }
