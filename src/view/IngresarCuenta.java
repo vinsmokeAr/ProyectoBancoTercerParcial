@@ -4,19 +4,20 @@
 * Fecha de modificación: 11 / junio / 23
 * Descripción: Se creó un jDialog para ingresar las cuentas y el monto inicial 
 * de un cliente.
-*/
+ */
 package view;
+
+import javax.swing.JOptionPane;
 
 public class IngresarCuenta extends javax.swing.JDialog {
 
+    private IngresarClientes frmClientes;
 
-    public IngresarCuenta(java.awt.Frame parent, boolean modal) {
+    public IngresarCuenta(IngresarClientes frmClientes, java.awt.Frame parent, 
+            boolean modal) {
         super(parent, modal);
+        this.frmClientes = frmClientes;
         initComponents();
-    }
-
-    IngresarCuenta() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @SuppressWarnings("unchecked")
@@ -27,7 +28,7 @@ public class IngresarCuenta extends javax.swing.JDialog {
         CabeceraBanco = new javax.swing.JLabel();
         tipoDeCuenta = new javax.swing.JLabel();
         montoInicial = new javax.swing.JLabel();
-        elegirCuenta = new javax.swing.JComboBox<>();
+        cmbCuenta = new javax.swing.JComboBox<>();
         ingresarMonto = new javax.swing.JTextField();
         agregarCuentaC = new javax.swing.JButton();
 
@@ -44,7 +45,7 @@ public class IngresarCuenta extends javax.swing.JDialog {
             .addGroup(panelArribaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(CabeceraBanco)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelArribaLayout.setVerticalGroup(
             panelArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -57,7 +58,7 @@ public class IngresarCuenta extends javax.swing.JDialog {
         montoInicial.setForeground(new java.awt.Color(255, 255, 255));
         montoInicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/MontoInicial.png"))); // NOI18N
 
-        elegirCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta ahorro", "Cuenta corriente", "Cuenta nómina", " " }));
+        cmbCuenta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenta ahorro", "Cuenta corriente", "Cuenta nómina", " " }));
 
         agregarCuentaC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Agregar.png"))); // NOI18N
         agregarCuentaC.setBorder(null);
@@ -71,19 +72,22 @@ public class IngresarCuenta extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelArriba, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tipoDeCuenta)
-                    .addComponent(montoInicial))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ingresarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(elegirCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(agregarCuentaC))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(agregarCuentaC))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tipoDeCuenta)
+                            .addComponent(montoInicial))
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cmbCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ingresarMonto))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(panelArriba, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,9 +96,9 @@ public class IngresarCuenta extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoDeCuenta)
-                    .addComponent(elegirCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ingresarMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(montoInicial))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
@@ -107,58 +111,35 @@ public class IngresarCuenta extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
      /**
      *
-     * Se creó el método para agregar un tipo de cuenta al cliente 
+     * Se creó el método para agregar un tipo de cuenta al cliente
      */
     private void agregarCuentaCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarCuentaCActionPerformed
-        // TODO add your handling code here:
+        Object[] fila = new Object[2];
+        if (isExiste(String.valueOf(cmbCuenta.getSelectedItem()))) {
+            fila[0] = cmbCuenta.getSelectedItem();
+            fila[1] = ingresarMonto.getText();
+            frmClientes.getModeloCuentas().addRow(fila);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, 
+                    "Esta cuenta ya fue añadida", "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_agregarCuentaCActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(IngresarCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(IngresarCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(IngresarCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(IngresarCuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private boolean isExiste(String cuenta) {
+        for (int i=0; i < frmClientes.getModeloCuentas().getRowCount();i++) {
+//            if()
         }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                IngresarCuenta dialog = new IngresarCuenta(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+        return false;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CabeceraBanco;
     private javax.swing.JButton agregarCuentaC;
-    private javax.swing.JComboBox<String> elegirCuenta;
+    private javax.swing.JComboBox<String> cmbCuenta;
     private javax.swing.JTextField ingresarMonto;
     private javax.swing.JLabel montoInicial;
     private javax.swing.JPanel panelArriba;

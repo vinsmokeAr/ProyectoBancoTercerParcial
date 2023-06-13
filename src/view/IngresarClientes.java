@@ -15,8 +15,9 @@ import javax.swing.ImageIcon;
 
 public class IngresarClientes extends javax.swing.JFrame {
     ClienteController controlador = new ClienteController();
-    private final DefaultTableModel modelo2;
+    private DefaultTableModel modelo2;
     String rfcActual;
+    private DefaultTableModel modeloCuentas;
 
     /**
      * Se inicializó el método cliente
@@ -24,6 +25,7 @@ public class IngresarClientes extends javax.swing.JFrame {
     public IngresarClientes() {
         initComponents();
         modelo2 = (DefaultTableModel) tablaClientes.getModel();
+        modeloCuentas = (DefaultTableModel) tablaDeCuentas.getModel();
         mostrarDatosClienteTabla();
     }
 
@@ -35,7 +37,6 @@ public class IngresarClientes extends javax.swing.JFrame {
         BotonRegresar = new javax.swing.JButton();
         cargarImagenUsuario = new javax.swing.JButton();
         fotoUsuario = new javax.swing.JLabel();
-        cambiarImg = new javax.swing.JLabel();
         guardarCliente = new javax.swing.JButton();
         eliminarCliente = new javax.swing.JButton();
         botonActualizar = new javax.swing.JButton();
@@ -58,6 +59,7 @@ public class IngresarClientes extends javax.swing.JFrame {
 
         panelCliente.setBackground(new java.awt.Color(4, 92, 76));
         panelCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        panelCliente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BotonRegresar.setBackground(new java.awt.Color(4, 92, 76));
         BotonRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Regresar.png"))); // NOI18N
@@ -67,18 +69,19 @@ public class IngresarClientes extends javax.swing.JFrame {
                 BotonRegresarMouseClicked(evt);
             }
         });
+        panelCliente.add(BotonRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 9, -1, 28));
 
         cargarImagenUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/CargarFotoUsuario.png"))); // NOI18N
+        cargarImagenUsuario.setToolTipText("Cambiar foto");
         cargarImagenUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cargarImagenUsuarioMouseClicked(evt);
             }
         });
+        panelCliente.add(cargarImagenUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 40, 40));
 
         fotoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/AvatarHombre.png"))); // NOI18N
-
-        cambiarImg.setForeground(new java.awt.Color(255, 255, 255));
-        cambiarImg.setText("Cambiar fotografía:");
+        panelCliente.add(fotoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 55, -1, -1));
 
         guardarCliente.setBackground(new java.awt.Color(4, 92, 76));
         guardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonCaféGuardar.png"))); // NOI18N
@@ -88,6 +91,7 @@ public class IngresarClientes extends javax.swing.JFrame {
                 guardarClienteMouseClicked(evt);
             }
         });
+        panelCliente.add(guardarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 344, -1, -1));
 
         eliminarCliente.setBackground(new java.awt.Color(4, 92, 76));
         eliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonCaféEliminar.png"))); // NOI18N
@@ -97,6 +101,7 @@ public class IngresarClientes extends javax.swing.JFrame {
                 eliminarClienteMouseClicked(evt);
             }
         });
+        panelCliente.add(eliminarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 411, -1, -1));
 
         botonActualizar.setBackground(new java.awt.Color(4, 92, 76));
         botonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/botonCaféActualizar.png"))); // NOI18N
@@ -106,62 +111,14 @@ public class IngresarClientes extends javax.swing.JFrame {
                 botonActualizarMouseClicked(evt);
             }
         });
-
-        javax.swing.GroupLayout panelClienteLayout = new javax.swing.GroupLayout(panelCliente);
-        panelCliente.setLayout(panelClienteLayout);
-        panelClienteLayout.setHorizontalGroup(
-            panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelClienteLayout.createSequentialGroup()
-                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelClienteLayout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelClienteLayout.createSequentialGroup()
-                                .addComponent(cambiarImg)
-                                .addGap(18, 18, 18)
-                                .addComponent(cargarImagenUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(fotoUsuario)
-                            .addComponent(BotonRegresar, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(panelClienteLayout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(eliminarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(guardarCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonActualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
-        panelClienteLayout.setVerticalGroup(
-            panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelClienteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotonRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(fotoUsuario)
-                .addGroup(panelClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelClienteLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cargarImagenUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelClienteLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(cambiarImg)))
-                .addGap(37, 37, 37)
-                .addComponent(guardarCliente)
-                .addGap(32, 32, 32)
-                .addComponent(eliminarCliente)
-                .addGap(41, 41, 41)
-                .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
+        panelCliente.add(botonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(74, 487, -1, 33));
 
         panelDatosClientes.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del cliente.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 24))); // NOI18N
 
         tablaClientes.setBackground(new java.awt.Color(243, 237, 221));
         tablaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "RFC", "Nombre", "Teléfono"
@@ -184,10 +141,7 @@ public class IngresarClientes extends javax.swing.JFrame {
         tablaDeCuentas.setBackground(new java.awt.Color(243, 237, 221));
         tablaDeCuentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Tipo de cuenta", "Monto"
@@ -211,32 +165,31 @@ public class IngresarClientes extends javax.swing.JFrame {
         panelDatosClientesLayout.setHorizontalGroup(
             panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelScrollClientes)
-            .addGroup(panelDatosClientesLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDatosClientesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(panelDatosClientesLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreCliente)
-                            .addComponent(rfc))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ingresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ingresarRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(51, 51, 51)
-                        .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(direccionCliente)
-                            .addComponent(telefonoCliente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ingresarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ingresarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25))
-                    .addGroup(panelDatosClientesLayout.createSequentialGroup()
                         .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(agregarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(panelDatosClientesLayout.createSequentialGroup()
+                                .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombreCliente)
+                                    .addComponent(rfc))
+                                .addGap(18, 18, 18)
+                                .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ingresarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ingresarRFC, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(51, 51, 51)
+                .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(direccionCliente)
+                    .addComponent(telefonoCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ingresarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ingresarDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25))
         );
         panelDatosClientesLayout.setVerticalGroup(
             panelDatosClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,10 +214,10 @@ public class IngresarClientes extends javax.swing.JFrame {
                         .addComponent(ingresarTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(agregarCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelScrollClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(panelScrollClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -272,9 +225,10 @@ public class IngresarClientes extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelDatosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(panelDatosClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,7 +308,7 @@ public class IngresarClientes extends javax.swing.JFrame {
      */
     
     private void agregarCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agregarCuentaMouseClicked
-        IngresarCuenta iCuenta = new IngresarCuenta(this, true);
+        IngresarCuenta iCuenta = new IngresarCuenta(IngresarClientes.this,this, true);
         iCuenta.setVisible(true);
     }//GEN-LAST:event_agregarCuentaMouseClicked
 
@@ -379,6 +333,10 @@ public class IngresarClientes extends javax.swing.JFrame {
             rsdragdropfiles.RSDragDropFiles.setCopiar( jF.getSelectedFile().toString(), "src/img/AvatarMujer.png" );
             fotoUsuario.setIcon(new ImageIcon(jF.getSelectedFile().toString()));
     }//GEN-LAST:event_cargarImagenUsuarioMouseClicked
+
+    public DefaultTableModel getModeloCuentas() {
+        return modeloCuentas;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -416,7 +374,6 @@ public class IngresarClientes extends javax.swing.JFrame {
     private javax.swing.JButton BotonRegresar;
     private javax.swing.JButton agregarCuenta;
     private javax.swing.JButton botonActualizar;
-    private javax.swing.JLabel cambiarImg;
     private javax.swing.JButton cargarImagenUsuario;
     private javax.swing.JLabel direccionCliente;
     private javax.swing.JButton eliminarCliente;
